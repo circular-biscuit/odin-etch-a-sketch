@@ -1,7 +1,9 @@
-body {
+html {
     background-color: black;
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -10,13 +12,15 @@ h1 {
     text-align: center;
 }
 
+
 #container {
     display: flex;
     justify-content: center;
+    /* box-sizing: border-box; */
     margin: 32px;
-    /* max-width: 960px;
-    border: 2px solid white; */
-    padding: 4px;
+    /* max-width: 640px; */
+    border: 2px solid white; 
+    padding: 16px;
 }
 
 .column {
@@ -26,8 +30,8 @@ h1 {
 
 .element {
     border: 1px solid black;
-    width: 5vw;
-    height: 5vw;
+    width: 40px;
+    height: 40px;
     background-color: crimson;
 }
 
