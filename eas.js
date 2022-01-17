@@ -22,23 +22,32 @@ function createGrid(gridSize){
     }
 }
 
+
+
 //add etch to hovered over grid square 
 function etch(){
-    this.style.backgroundColor = 'aquamarine';
+    // this.style.backgroundColor = 'aquamarine';
+    this.classList.add('etch');
 }
 
-// const gridPrompt = document.querySelector('#gridPrompt');
-// gridPrompt.addEventListener('click', newGrid);
+//button click functionality added
+const newGridButton = document.querySelector('#newGridButton');
+newGridButton.addEventListener('click', newGrid);
 
-// function newGrid(){
-//     gridSize = prompt('how many rows & columns would you like your grid to be (max 100)', '16')
-//     clearGrid();
-//     createGrid(gridSize);
-// }
+//button to initialize blank grid
+const clearGridButton = document.querySelector('#clearGridButton');
+clearGridButton.addEventListener('click', clearGrid)
 
-// //clear original grid when button prompt answered
-// function clearGrid({
+//initialize new grid with entered grid size
+function newGrid(){
+    gridSize = prompt('how many rows & columns would you like your grid to be (max 100)', '16')
+    createGrid(gridSize);
+}
 
-// })
+//initialize blank grid
+function clearGrid(){
 
+}
+
+//
 createGrid(gridSize);

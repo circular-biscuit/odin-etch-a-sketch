@@ -16,29 +16,28 @@ h1 {
 #container {
     display: flex;
     justify-content: center;
-    /* box-sizing: border-box; */
     margin: 32px;
-    /* max-width: 640px; */
+    width: 640px;
+    height: auto;
     border: 2px solid white; 
     padding: 16px;
 }
 
-.column {
-    border: 0.5px solid black;
-    text-align: center;
-}
+/* .column {
+    width: 5%;
+} */
 
 .element {
-    border: 1px solid black;
+    /* box-sizing: border-box; */
+    /* border: 1px solid black; */
     width: 40px;
     height: 40px;
     background-color: crimson;
 }
 
-#gridPrompt {
+#buttonContainer {
     display: flex;
-    justify-content: center;
-    border: 2px solid white;
+    justify-content: space-evenly;
     padding: 8px;
 }
 
@@ -48,4 +47,10 @@ button {
     background-color: black;
     border: 1px solid white;
     border-radius: 4px;
+    padding: 8px;
+}
+
+.etch {
+    background-color: aquamarine;
+    transition: background-color 0.5s;
 }
