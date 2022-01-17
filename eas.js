@@ -8,10 +8,6 @@ const container = document.querySelector('#container');
 const newGridButton = document.querySelector('#newGridButton');
 const clearGridButton = document.querySelector('#clearGridButton');
 const removeGridButton = document.querySelector('#removeGridButton');
-// const columnList = document.querySelectorAll('.column');
-const columnList = document.getElementsByClassName('column');
-// const rowList = document.querySelectorAll('.row');
-const rowList = document.getElementsByClassName('row');
 
 //event listeners
 newGridButton.addEventListener('click', newGrid);
@@ -33,9 +29,12 @@ function createGrid(gridSize){
     }
 }
 
+//call create grid
+createGrid(gridSize);
+
 //add etch to hovered over grid square 
 function etch(){
-    // this.style.backgroundColor = 'aquamarine';
+    this.classList.remove('initialize');
     this.classList.add('etch');
 }
 
@@ -50,19 +49,22 @@ function newGrid(){
 
 //initialize blank grid
 function clearGrid(){
-    console.log('i am a clear grid button');
-    for(let i=0; i<rowList.length; i++){
-        // rowList[i].classList.add('initialize');
-        rowList[i].style.backgroundColor = 'crimson';
+    for(let i=0; i<elementList.length; i++){
+        elementList[i].classList.remove('etch');
+        elementList[i].classList.add('initialize');
+        // elementList[i].style.backgroundColor = 'crimson';
     }
 }
 
 //remove grid
 function removeGrid(){
     console.log('i am a remove grid button');
-    for(let i=0; i<rowList.length; i++){
-        rowList[i].remove();
+    for(let i=0; i<elementList.length; i++){
+        elementList[i].remove();
     }
 }
 
-createGrid(gridSize);
+
+
+const columnList = document.querySelectorAll('.column');
+const elementList = document.querySelectorAll('.element');
