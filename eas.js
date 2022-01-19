@@ -4,9 +4,10 @@ function masterMaker(){
     const column = [];
     const row = [];
     // set size of grid
-    let gridSize = 16;
+    let gridSize = 10;
+    let elementHeight = (640/gridSize); 
     //query selects
-    const container = document.querySelector('#container');
+    const grid = document.querySelector('#grid');
     const newGridButton = document.querySelector('#newGridButton');
     const clearGridButton = document.querySelector('#clearGridButton');
     const removeGridButton = document.querySelector('#removeGridButton');
@@ -27,10 +28,11 @@ function masterMaker(){
             for(let j=0; j<gridSize; j++){
                 row[j] = document.createElement('div');
                 row[j].classList.add('element');
+                row[j].style.height = ''
                 row[j].addEventListener('mouseenter', etch);
                 column[i].appendChild(row[j]);
             }
-            container.appendChild(column[i]);
+            grid.appendChild(column[i]);
         }
     }
     //add etch to hovered over grid square 
@@ -47,7 +49,6 @@ function masterMaker(){
     function clearGrid(){
         for(let i=0; i<elementList.length; i++){
             elementList[i].classList.remove('etch');
-            elementList[i].classList.add('initialize');
         }
     }
 
