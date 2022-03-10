@@ -1,22 +1,25 @@
-html {
+:root {
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-h1 {
-    color: white;
+* {
     font-family: monospace;
+    color: white;
+}
+
+h1 {
     text-align: center;
 }
 
-#masterContainer {
+#gridContainer {
     width: 640px;
     height: 640px;
 }
 
-#grid {
+.grid {
     display: flex;
     width: 100%;
 }
@@ -29,8 +32,7 @@ h1 {
     box-sizing: border-box;
     border: 1px solid black;
     width: 100%;
-    /* height: 64px; */
-    /* height: 40px; */
+    height: 64px;
     background-color: crimson;
     transition: background-color 0.5s;
 }
@@ -42,12 +44,18 @@ h1 {
 }
 
 button {
-    font-family: monospace;
-    color: white;
     background-color: black;
     border: 1px solid white;
     border-radius: 4px;
     padding: 8px;
+}
+
+button:hover {
+    background-color: darkmagenta;
+}
+
+button:active {
+    transform: scale(1.02);
 }
 
 .etch {

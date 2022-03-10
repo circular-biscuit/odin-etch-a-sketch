@@ -1,75 +1,56 @@
-
-function masterMaker(){
+const gridContainer = document.querySelector('#gridContainer');
+//create etch-a-sketch grid
+const createGrid = (gridSize = 10) => {
+    //create grid div, append to container
+    const grid = document.createElement('div');
+    grid.classList.add('grid');
+    gridContainer.append(grid);
     //declare column and row arrays
     const column = [];
     const row = [];
-    // set size of grid
-    let gridSize = 10;
-    let elementHeight = (640/gridSize); 
-    //query selects
-    const grid = document.querySelector('#grid');
-    const newGridButton = document.querySelector('#newGridButton');
-    const clearGridButton = document.querySelector('#clearGridButton');
-    const removeGridButton = document.querySelector('#removeGridButton');
-
-    //event listeners
-    newGridButton.addEventListener('click', newGrid);
-    clearGridButton.addEventListener('click', clearGrid);
-    removeGridButton.addEventListener('click', removeGrid);
-
-    //call create grid
-    createGrid(gridSize);
-
-    //create grid of divs
-    function createGrid(gridSize){
-        for(let i=0; i<gridSize; i++){
-            column[i] = document.createElement('div');
-            column[i].classList.add('column');
-            for(let j=0; j<gridSize; j++){
-                row[j] = document.createElement('div');
-                row[j].classList.add('element');
-                row[j].style.height = ''
-                row[j].addEventListener('mouseenter', etch);
-                column[i].appendChild(row[j]);
-            }
-            grid.appendChild(column[i]);
+    //create column and row divs
+    for(let i=0; i<gridSize; i++){
+        column[i] = document.createElement('div');
+        column[i].classList.add('column');
+        for(let j=0; j<gridSize; j++){
+            row[j] = document.createElement('div');
+            row[j].classList.add('element');
+            column[i].append(row[j]);
         }
+        grid.append(column[i]);
     }
-    //add etch to hovered over grid square 
-    function etch(){
-        this.classList.remove('initialize');
-        this.classList.add('etch');
-    }
+    //add etch event listener
+    grid.addEventListener('mouseover', e => {
+        e.target.classList.add('etch');
+    });
+};
 
-    const columnList = document.querySelectorAll('.column');
+//call create grid
+createGrid();
+
+//clear grid function
+const clearGrid = () => {
     const elementList = document.querySelectorAll('.element');
-    
+    elementList.forEach(element => {
+        element.classList.remove('etch');           
+    });
+};
+//clear grid button
+const clearGridButton = document.querySelector('#clearGridButton');
+clearGridButton.addEventListener('click', clearGrid);
 
-    //initialize blank grid
-    function clearGrid(){
-        for(let i=0; i<elementList.length; i++){
-            elementList[i].classList.remove('etch');
-        }
-    }
+//remove grid function
+const removeGrid = () => {
+    const grid = document.querySelector('.grid');
+    grid.remove();
+};
 
-    //remove grid
-    function removeGrid(){
-        for(let i=0; i<columnList.length; i++){
-            columnList[i].remove();
-        }
-    }
-
-    //initialize new grid with entered grid size
-    function newGrid(){
-        // gridSize = prompt('how many rows & columns would you like your grid to be (max 100)');
-        // if(gridSize !== null && gridSize<=100){
-        //     removeGrid();
-        //     createGrid(gridSize);
-        // }
-        removeGrid();
-        masterMaker();
-    }
-
-    
+//initialize new grid with entered grid size
+const newGrid = () => {
+    removeGrid();
+    let newGridSize = prompt('enter new grid size');
+    createGrid(newGridSize);
 }
-masterMaker();
+//new grid button
+const newGridButton = document.querySelector('#newGridButton');
+newGridButton.addEventListener('click', newGrid);
