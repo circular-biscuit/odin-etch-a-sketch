@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector('#gridContainer');
 //create etch-a-sketch grid
-const createGrid = (gridSize = 10) => {
+const createGrid = (gridSize = 16) => {
     //create grid div, append to container
     const grid = document.createElement('div');
     grid.classList.add('grid');
@@ -8,6 +8,8 @@ const createGrid = (gridSize = 10) => {
     //declare column and row arrays
     const column = [];
     const row = [];
+    //calculate element height using grid size
+    let elementHeight = 640/gridSize;
     //create column and row divs
     for(let i=0; i<gridSize; i++){
         column[i] = document.createElement('div');
@@ -15,6 +17,8 @@ const createGrid = (gridSize = 10) => {
         for(let j=0; j<gridSize; j++){
             row[j] = document.createElement('div');
             row[j].classList.add('element');
+            //set element height so grid size stays fixed
+            row[j].style.height = `${elementHeight}px`;
             column[i].append(row[j]);
         }
         grid.append(column[i]);
@@ -45,7 +49,7 @@ const removeGrid = () => {
     grid.remove();
 };
 
-//initialize new grid with entered grid size
+//new grid function
 const newGrid = () => {
     removeGrid();
     let newGridSize = prompt('enter new grid size');
